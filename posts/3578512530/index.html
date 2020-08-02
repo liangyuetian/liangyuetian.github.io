@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css 滚动捕捉 scroll,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="通过在容器元素上设置scroll-snap-type属性并在其子元素上设置scroll-snap-align属性来使用滚动捕捉。当滚动容器元素时，它将捕捉到你定义的子元素 12.container &amp;#123; scroll-snap-type: y mandatory; &amp;#125; .child &amp;#123; scroll-snap-align: start; &amp;#125;">
+<meta name="keywords" content="css 滚动捕捉 scroll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-scroll-滚动捕捉">
+<meta property="og:url" content="https://liangyuetian.github.io/posts/3578512530/index.html">
+<meta property="og:site_name" content="凉月-天">
+<meta property="og:description" content="通过在容器元素上设置scroll-snap-type属性并在其子元素上设置scroll-snap-align属性来使用滚动捕捉。当滚动容器元素时，它将捕捉到你定义的子元素 12.container &amp;#123; scroll-snap-type: y mandatory; &amp;#125; .child &amp;#123; scroll-snap-align: start; &amp;#125;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-12T16:14:40.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css-scroll-滚动捕捉">
+<meta name="twitter:description" content="通过在容器元素上设置scroll-snap-type属性并在其子元素上设置scroll-snap-align属性来使用滚动捕捉。当滚动容器元素时，它将捕捉到你定义的子元素 12.container &amp;#123; scroll-snap-type: y mandatory; &amp;#125; .child &amp;#123; scroll-snap-align: start; &amp;#125;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://liangyuetian.github.io/posts/3578512530/">
+
+
+
+
+
+  <title>css-scroll-滚动捕捉 | 凉月-天</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凉月-天</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凉月-天的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liangyuetian.github.io/posts/3578512530/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pt">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凉月-天">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css-scroll-滚动捕捉</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T16:08:11+08:00">
+                2019-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通过在容器元素上设置scroll-snap-type属性并在其子元素上设置scroll-snap-align属性来使用滚动捕捉。当滚动容器元素时，它将捕捉到你定义的子元素</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">scroll-snap-type</span>: y mandatory; &#125; </span><br><span class="line"><span class="selector-class">.child</span> &#123; <span class="attribute">scroll-snap-align</span>: start; &#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><a href="https://www.w3cplus.com/css/practical-css-scroll-snapping.html" target="_blank" rel="noopener">https://www.w3cplus.com/css/practical-css-scroll-snapping.html</a></p>
+<h3 id="设置捕捉关键点"><a href="#设置捕捉关键点" class="headerlink" title="设置捕捉关键点"></a>设置捕捉关键点</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; <span class="attribute">scroll-snap-points-y</span>: <span class="built_in">repeat</span>(300px); &#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法非常有限。由于它只允许均匀间隔的捕捉点，因此你无法真正构建捕捉到不同大小元素的接口。<br>如果元素在不同的屏幕尺寸之间改变形状，你也必然会遇到问题。</p>
+<p>或</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; </span><br><span class="line">    <span class="attribute">scroll-snap-type</span>: y mandatory;</span><br><span class="line">    <span class="comment">/* 在y轴上设置捕捉点，适合竖直方向上的滚动 */</span></span><br><span class="line">    <span class="comment">/* 在x轴上设置捕捉点 适合水平方向上的滚动*/</span></span><br><span class="line">    <span class="attribute">scroll-snap-points-y</span>: <span class="built_in">repeat</span>(300px);</span><br><span class="line">    <span class="attribute">scroll-snap-type</span>: y mandatory;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child</span> &#123; </span><br><span class="line">    <span class="attribute">scroll-snap-align</span>: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="父容器属性"><a href="#父容器属性" class="headerlink" title="父容器属性"></a>父容器属性</h2><h3 id="scroll-snap-type-mandatory-vs-proximity"><a href="#scroll-snap-type-mandatory-vs-proximity" class="headerlink" title="scroll-snap-type: mandatory vs. proximity"></a>scroll-snap-type: mandatory vs. proximity</h3><p><code>mandatory</code> 属性值意味着每当用户停止滚动时，浏览器必须捕捉到捕捉点。<br><code>proximity</code> 属性没有那么严格，它意味着浏览器可能会在看起来合适的情况下突然捕捉到某个位置。根据我的经验，当你在一个捕捉点的几百个像素内停止滚动时，这种情况就会出现。</p>
+<p><code>mandatory</code> 更危险 可以提供更一致的用户体验<br><code>proximity</code> 更温和</p>
+<h3 id="scroll-padding"><a href="#scroll-padding" class="headerlink" title="scroll-padding"></a>scroll-padding</h3><p>默认情况下，内容会吸附到容器的边缘。你可以通过在容器上设置scroll-padding属性来改变它。它遵循与常规padding属性相同的语法。</p>
+<p>如果你的布局中有可能妨碍内容的元素（比如固定的标题），那么这个属性就非常的有用。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">scroll-padding</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="子元素上的属性"><a href="#子元素上的属性" class="headerlink" title="子元素上的属性"></a>子元素上的属性</h2><h3 id="scroll-snap-align"><a href="#scroll-snap-align" class="headerlink" title="scroll-snap-align"></a>scroll-snap-align</h3><p>这个属性可以让你指定元素哪一部分应该与容器对齐。它有三个值可选择：start、center和end。</p>
+<p>这些是相对于滚动方向的。如果是垂直滚动，start指的是元素的顶部边缘。如果是水平滚动条，它指的是左边缘。center和end遵循相同的原则。<br>你可以为滚动条的不同方向设置不同的值，这两个值之间用空格分隔开</p>
+<h3 id="scroll-snap-stop：normal-vs-always"><a href="#scroll-snap-stop：normal-vs-always" class="headerlink" title="scroll-snap-stop：normal vs. always"></a>scroll-snap-stop：normal vs. always</h3><p>默认情况下，滚动捕捉仅在用户停止滚动时启动，这意味着用户可以在停止之前跳过多个捕捉点</p>
+<p>你可以在任何子元素上设置scroll-snap-stop: always来改变它。这会强制滚动容器在该元素上停止，然后用户可以继续滚动。</p>
+<blockquote>
+<p>这个特性可以实现滚屏</p>
+</blockquote>
+<h2 id="滚动捕捉可以同时在两个方向工作"><a href="#滚动捕捉可以同时在两个方向工作" class="headerlink" title="滚动捕捉可以同时在两个方向工作"></a>滚动捕捉可以同时在两个方向工作</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123; </span><br><span class="line">    scroll-snap-type: both mandatory; // both</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.tile</span> &#123; <span class="attribute">scroll-snap-align</span>: start; &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css-滚动捕捉-scroll/" rel="tag"># css 滚动捕捉 scroll</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/183942322/" rel="next" title="判断一个元素是否在另一个元素中">
+                <i class="fa fa-chevron-left"></i> 判断一个元素是否在另一个元素中
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/2631211152/" rel="prev" title="css-隐藏滚动条">
+                css-隐藏滚动条 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">pt</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置捕捉关键点"><span class="nav-number">1.</span> <span class="nav-text">设置捕捉关键点</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#父容器属性"><span class="nav-number"></span> <span class="nav-text">父容器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scroll-snap-type-mandatory-vs-proximity"><span class="nav-number">1.</span> <span class="nav-text">scroll-snap-type: mandatory vs. proximity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scroll-padding"><span class="nav-number">2.</span> <span class="nav-text">scroll-padding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子元素上的属性"><span class="nav-number"></span> <span class="nav-text">子元素上的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scroll-snap-align"><span class="nav-number">1.</span> <span class="nav-text">scroll-snap-align</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scroll-snap-stop：normal-vs-always"><span class="nav-number">2.</span> <span class="nav-text">scroll-snap-stop：normal vs. always</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动捕捉可以同时在两个方向工作"><span class="nav-number"></span> <span class="nav-text">滚动捕捉可以同时在两个方向工作</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pt</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

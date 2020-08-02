@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CSSOM是一组允许JavaScript操作CSS的API。它非常类似于DOM，但是用于CSS而不是HTML。它允许用户动态读取和修改CSS样式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css对象模型-CSSOM">
+<meta property="og:url" content="https://liangyuetian.github.io/posts/3542651706/index.html">
+<meta property="og:site_name" content="凉月-天">
+<meta property="og:description" content="CSSOM是一组允许JavaScript操作CSS的API。它非常类似于DOM，但是用于CSS而不是HTML。它允许用户动态读取和修改CSS样式。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-29T15:21:03.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css对象模型-CSSOM">
+<meta name="twitter:description" content="CSSOM是一组允许JavaScript操作CSS的API。它非常类似于DOM，但是用于CSS而不是HTML。它允许用户动态读取和修改CSS样式。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://liangyuetian.github.io/posts/3542651706/">
+
+
+
+
+
+  <title>css对象模型-CSSOM | 凉月-天</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凉月-天</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凉月-天的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liangyuetian.github.io/posts/3542651706/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pt">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凉月-天">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css对象模型-CSSOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-28T16:40:07+08:00">
+                2019-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSSOM是一组允许JavaScript操作CSS的API。它非常类似于DOM，但是用于CSS而不是HTML。它允许用户动态读取和修改CSS样式。</p>
+<a id="more"></a>
+<p><a href="https://www.w3cplus.com/javascript/cssom-css-typed-om.html" target="_blank" rel="noopener">https://www.w3cplus.com/javascript/cssom-css-typed-om.html</a><br><a href="https://www.w3.org/TR/cssom-1/" target="_blank" rel="noopener">https://www.w3.org/TR/cssom-1/</a></p>
+<h2 id="设置css方法"><a href="#设置css方法" class="headerlink" title="设置css方法"></a>设置css方法</h2><h3 id="1-ele-style-protypeName"><a href="#1-ele-style-protypeName" class="headerlink" title="1 ele.style.protypeName"></a>1 ele.style.protypeName</h3><p>我们可以使用相同的格式添加或更改页面上任何对象的CSS：ele.style.propertyName，其中ele指的是DOM元素，propertyName指的是希望给ele元素要添加的样式属性</p>
+<blockquote>
+<p>记住，带有-中划线的CSS属性需要改用陀峰形式，比如上面示例中的background-color属性要写成backgroundColor</p>
+</blockquote>
+<blockquote>
+<p>注意，在动态设置float属性时，需要使用cssFloat，这是因为float是JavaScript中的一个关键词。<br>这个有点类似于getAttribute()给HTML元素设置for属性时，需要使用htmlFor。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>style.backgroundColor=<span class="string">'green'</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="2-0-attributeStyleMap"><a href="#2-0-attributeStyleMap" class="headerlink" title="2 $0.attributeStyleMap"></a>2 $0.attributeStyleMap</h3><p>在CSS Houdini中的CSSOM，我们可以使用.attributeStyleMap属性来替代ele.style。可以使用ele.attributeStyleMap.set(property, value)来设置元素内联样式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>attributeStyleMap.set(<span class="string">'background-color'</span>, <span class="string">'green'</span>)</span><br></pre></td></tr></table></figure>
+<p>其得到的效果和ele.style.property = value等同的效果。另外，.attributeStyleMap类似于Map对象，所以它们支持对象常有的一些方法，比如get、set、keys、values和entry等。这样让我们的工作也变得更为灵活：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>attributeStyleMap.set(<span class="string">'background-color'</span>, <span class="string">'green'</span>) <span class="comment">// 设置background-color的值为green</span></span><br><span class="line">$<span class="number">0.</span>attributeStyleMap.get(<span class="string">'background-color'</span>).value === <span class="string">'green'</span> <span class="comment">// =&gt; false</span></span><br><span class="line">$<span class="number">0.</span>attributeStyleMap.has(<span class="string">'background-color'</span>) <span class="comment">// =&gt; true</span></span><br><span class="line">$<span class="number">0.</span>attributeStyleMap.delete(<span class="string">'background-color'</span>) <span class="comment">// =&gt; 删除background-color</span></span><br><span class="line">$<span class="number">0.</span>attributeStyleMap.clear() <span class="comment">// =&gt; 删除所有样式</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-0-style-cssText"><a href="#3-0-style-cssText" class="headerlink" title="3 $0.style.cssText"></a>3 $0.style.cssText</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>style.cssText = <span class="string">'color: red; background-color: blue'</span></span><br></pre></td></tr></table></figure>
+<h2 id="获取计算样式"><a href="#获取计算样式" class="headerlink" title="获取计算样式"></a>获取计算样式</h2><h3 id="1-window-getComputedStyle"><a href="#1-window-getComputedStyle" class="headerlink" title="1 window.getComputedStyle()"></a>1 window.getComputedStyle()</h3><p>我们可以使用window.getComputedStyle()方法获取元素上任何CSS的计算值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.getComputedStyle($<span class="number">0</span>).backgroundColor <span class="comment">// =&gt; "rgb(0, 128, 0)"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.getComputedStyle(el).backgroundColor;</span><br><span class="line"><span class="built_in">window</span>.getComputedStyle(el)[<span class="string">'background-color'</span>];</span><br><span class="line"><span class="built_in">window</span>.getComputedStyle(el).getPropertyValue(<span class="string">'background-color'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用el-computedStyleMap"><a href="#2-使用el-computedStyleMap" class="headerlink" title="2 使用el.computedStyleMap()"></a>2 使用el.computedStyleMap()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">el.computedStyleMap().get(<span class="string">'opacity'</span>).value <span class="comment">// =&gt; 0.5</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，window.getComputedStyle()和ele.computedStyleMap()的差别是，前者返回的是解析值，而后值返回计算值。类如，如果你的样式中有一个这样的值，width: 50%，那么在Typed OM中将保留百分值（width: 50%）;而CSSOM中返回的是解析值（width: 200px</p>
+</blockquote>
+<blockquote>
+<p>window.getComputedStyle() 返回50% 原始值 可以检索伪元素<br>ele.computedStyleMap() 返回200px 计算值</p>
+</blockquote>
+<h3 id="3-检索伪元素"><a href="#3-检索伪元素" class="headerlink" title="3 检索伪元素"></a>3 检索伪元素</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.getComputedStyle(ele, <span class="string">'::before'</span>).property;</span><br></pre></td></tr></table></figure>
+<h3 id="4-setProperty-该方法可以给CSS的属性设置一个新的值"><a href="#4-setProperty-该方法可以给CSS的属性设置一个新的值" class="headerlink" title="4 setProperty() 该方法可以给CSS的属性设置一个新的值"></a>4 setProperty() 该方法可以给CSS的属性设置一个新的值</h3><p>其中property指的是CSS属性，value设置的属性的值，priority允许设置CSS的权重，即!important。比如下面这个示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>style.setProperty(<span class="string">'color'</span>, <span class="string">'red'</span>, <span class="string">'important'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.getComputedStyle($<span class="number">0</span>).color  <span class="comment">// =&gt; "rgb(255, 0, 0)"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="5-getPropertyPriority-返回css属性的优先级"><a href="#5-getPropertyPriority-返回css属性的优先级" class="headerlink" title="5 getPropertyPriority() 返回css属性的优先级"></a>5 getPropertyPriority() 返回css属性的优先级</h3><p>getPropertyPriority()方法是一个很有意思的方法。这个方法会根据传入的CSS属性，返回一个DOMString来表示该属性的优先级。如果有的话，则返回important；如果不存在的话，返回空字符串<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>style.setProperty(<span class="string">'border'</span>, <span class="string">'2px solid red'</span>, <span class="string">'important'</span>)</span><br><span class="line">$<span class="number">0.</span>style.setProperty(<span class="string">'background-color'</span>, <span class="string">'orange'</span>)</span><br><span class="line">$<span class="number">0.</span>style.getPropertyPriority(<span class="string">'border'</span>) <span class="comment">// =&gt; "important" </span></span><br><span class="line">$<span class="number">0.</span>style.getPropertyPriority(<span class="string">'background-color'</span>) <span class="comment">// =&gt; ""</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="6-removeProperty-移除style对象的一个属性"><a href="#6-removeProperty-移除style对象的一个属性" class="headerlink" title="6 removeProperty() 移除style对象的一个属性"></a>6 removeProperty() 移除style对象的一个属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>style.removeProperty(<span class="string">'margin'</span>) <span class="comment">// =&gt; "" $0.style.getPropertyValue('margin') // =&gt; ""</span></span><br></pre></td></tr></table></figure>
+<h2 id="CSSStyleSheet-接口"><a href="#CSSStyleSheet-接口" class="headerlink" title="CSSStyleSheet 接口"></a>CSSStyleSheet 接口</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.styleSheets</span><br></pre></td></tr></table></figure>
+<p>遍历出来所有运用到的样式表的相关信息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">document</span>.styleSheets.length; i++) &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">document</span>.styleSheets[i]) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>CSSStyleSheet主要有两个属性</p>
+<ul>
+<li>cssRules：返回样式表中CSS规则的CSSRuleList对象</li>
+<li>ownerRule：如果一个样式表示通过@import规则引入document的，则ownerRule将返回那个CSSImportRule对象，否则返回null</li>
+</ul>
+<p>cssRules 非常有用，可以遍历出所有的css选择器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myRules = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>].cssRules; </span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">of</span> myRules) &#123; </span><br><span class="line">    <span class="keyword">if</span> (i.type === <span class="number">1</span>) &#123; </span><br><span class="line">        <span class="built_in">console</span>.log(i.selectorText)</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="insertRule-向样式表中插入一条新规则"><a href="#insertRule-向样式表中插入一条新规则" class="headerlink" title="insertRule 向样式表中插入一条新规则"></a>insertRule 向样式表中插入一条新规则</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> firstStylesheet = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">console</span>.log(firstStylesheet.cssRules.length) <span class="comment">// =&gt; 116 </span></span><br><span class="line">firstStylesheet.insertRule( <span class="string">`</span></span><br><span class="line"><span class="string">    body &#123; </span></span><br><span class="line"><span class="string">        background-color: orange; </span></span><br><span class="line"><span class="string">        font-size: 3em; padding: 2em; </span></span><br><span class="line"><span class="string">    &#125;`</span>, firstStylesheet.cssRules.length <span class="comment">// 插入位置，插入到最后一个位置</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>stylesheet.insertRule()方法接受两值参数：</p>
+<p>rule：一个字符串，也就是想插入的样式规则，包含选择器和对应的样式规则<br>index：一个数字，表示要插入的位置，这是一个可选参数</p>
+<h3 id="deleteRule-从当前样式表对象中删除指定的样式规则"><a href="#deleteRule-从当前样式表对象中删除指定的样式规则" class="headerlink" title="deleteRule 从当前样式表对象中删除指定的样式规则"></a>deleteRule 从当前样式表对象中删除指定的样式规则</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firstStylesheet.deleteRule(<span class="number">116</span>)</span><br></pre></td></tr></table></figure>
+<p>deleteRule()方法相对来说更为容易，它只接受一个参数index。index就是一个数字，用来指定样式规则的位置。作为参数传入的所选index必须小于cssRules.length，否则将抛出错误。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/3545086800/" rel="next" title="\b 和 \B">
+                <i class="fa fa-chevron-left"></i> \b 和 \B
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/183942322/" rel="prev" title="判断一个元素是否在另一个元素中">
+                判断一个元素是否在另一个元素中 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">pt</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置css方法"><span class="nav-number">1.</span> <span class="nav-text">设置css方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ele-style-protypeName"><span class="nav-number">1.1.</span> <span class="nav-text">1 ele.style.protypeName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-0-attributeStyleMap"><span class="nav-number">1.2.</span> <span class="nav-text">2 $0.attributeStyleMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-0-style-cssText"><span class="nav-number">1.3.</span> <span class="nav-text">3 $0.style.cssText</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取计算样式"><span class="nav-number">2.</span> <span class="nav-text">获取计算样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-window-getComputedStyle"><span class="nav-number">2.1.</span> <span class="nav-text">1 window.getComputedStyle()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用el-computedStyleMap"><span class="nav-number">2.2.</span> <span class="nav-text">2 使用el.computedStyleMap()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-检索伪元素"><span class="nav-number">2.3.</span> <span class="nav-text">3 检索伪元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-setProperty-该方法可以给CSS的属性设置一个新的值"><span class="nav-number">2.4.</span> <span class="nav-text">4 setProperty() 该方法可以给CSS的属性设置一个新的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-getPropertyPriority-返回css属性的优先级"><span class="nav-number">2.5.</span> <span class="nav-text">5 getPropertyPriority() 返回css属性的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-removeProperty-移除style对象的一个属性"><span class="nav-number">2.6.</span> <span class="nav-text">6 removeProperty() 移除style对象的一个属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSSStyleSheet-接口"><span class="nav-number">3.</span> <span class="nav-text">CSSStyleSheet 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insertRule-向样式表中插入一条新规则"><span class="nav-number">3.1.</span> <span class="nav-text">insertRule 向样式表中插入一条新规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deleteRule-从当前样式表对象中删除指定的样式规则"><span class="nav-number">3.2.</span> <span class="nav-text">deleteRule 从当前样式表对象中删除指定的样式规则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pt</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

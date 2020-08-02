@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="分隔符插入位置page-break-beforepage-break-afterpage-break-inside">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-专门为打印设计的css样式">
+<meta property="og:url" content="https://liangyuetian.github.io/posts/806548742/index.html">
+<meta property="og:site_name" content="凉月-天">
+<meta property="og:description" content="分隔符插入位置page-break-beforepage-break-afterpage-break-inside">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-12T16:14:40.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css-专门为打印设计的css样式">
+<meta name="twitter:description" content="分隔符插入位置page-break-beforepage-break-afterpage-break-inside">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://liangyuetian.github.io/posts/806548742/">
+
+
+
+
+
+  <title>css-专门为打印设计的css样式 | 凉月-天</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凉月-天</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凉月-天的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liangyuetian.github.io/posts/806548742/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pt">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凉月-天">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css-专门为打印设计的css样式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T10:55:18+08:00">
+                2019-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>分隔符插入位置<br>page-break-before<br>page-break-after<br>page-break-inside</p>
+<a id="more"></a>
+<blockquote>
+<p><a href="https://lon.im/post/css-print.html" target="_blank" rel="noopener">https://lon.im/post/css-print.html</a></p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.page</span> &#123;</span><br><span class="line">    <span class="attribute">page-break-before</span>: auto;</span><br><span class="line">    <span class="attribute">page-break-after</span>: always;</span><br><span class="line">    <span class="attribute">page-break-inside</span>: auto;</span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">        auto 如果需要，在对象之前插入页分割符</span></span><br><span class="line"><span class="comment">        always 始终在对象之前插入页分割符</span></span><br><span class="line"><span class="comment">        avoid 避免在对象前面插入页分割符</span></span><br><span class="line"><span class="comment">        left 在对象前面插入页分割符直到它到达一个空白的左页边</span></span><br><span class="line"><span class="comment">        right 在对象前面插入页分割符直到它到达一个空白的右页边</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用媒体查询来专门设置打印时的样式"><a href="#使用媒体查询来专门设置打印时的样式" class="headerlink" title="使用媒体查询来专门设置打印时的样式"></a>使用媒体查询来专门设置打印时的样式</h2><h3 id="media-print"><a href="#media-print" class="headerlink" title="@media print"></a>@media print</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>: white;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">img</span> &#123;</span><br><span class="line">        <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">a</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">        <span class="attribute">content</span>: <span class="string">"("</span> <span class="built_in">attr</span>(href) <span class="string">")"</span>; <span class="comment">/* 所有链接后显示链接地址 */</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在css中导入打印时专有样式"><a href="#在css中导入打印时专有样式" class="headerlink" title="在css中导入打印时专有样式"></a>在css中导入打印时专有样式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(<span class="string">"my-print-style.css"</span>) print;</span><br></pre></td></tr></table></figure>
+<h3 id="使用link引入打印时专有样式"><a href="#使用link引入打印时专有样式" class="headerlink" title="使用link引入打印时专有样式"></a>使用link引入打印时专有样式</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">media</span>=<span class="string">"print"</span> <span class="attr">href</span>=<span class="string">"my-print-style.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="page"><a href="#page" class="headerlink" title="@page"></a>@page</h2><p><code>@page</code>可以设置页面的大小<br>支持的属性有：margin、size、marks、bleed 以及页面外边距盒子等</p>
+<h3 id="设置页面外边距盒子"><a href="#设置页面外边距盒子" class="headerlink" title="设置页面外边距盒子"></a>设置页面外边距盒子</h3><p>页面外边距盒子需要在 @page 下使用，使用起来和伪类类似，也包含 content 属性。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">page</span> &#123;</span><br><span class="line">    <span class="comment">/* 页面内容区域底部添加一条 1px 的灰线 */</span></span><br><span class="line">    @bottom-left, @bottom-center, @bottom-right &#123;</span><br><span class="line">        <span class="selector-tag">border-top</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">gray</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 页脚中间显示格式如 "第 3 页" 的页码 */</span></span><br><span class="line">    @<span class="keyword">bottom</span>-<span class="keyword">center</span> &#123;</span><br><span class="line">        <span class="selector-tag">content</span>: "第" <span class="selector-tag">counter</span>(<span class="selector-tag">page</span>) "页";</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="margin-系列属性（margin-top、margin-right、margin-bottom、margin-left-和-margin）用于指定页面外边距大小。"><a href="#margin-系列属性（margin-top、margin-right、margin-bottom、margin-left-和-margin）用于指定页面外边距大小。" class="headerlink" title="margin 系列属性（margin-top、margin-right、margin-bottom、margin-left 和 margin）用于指定页面外边距大小。"></a>margin 系列属性（margin-top、margin-right、margin-bottom、margin-left 和 margin）用于指定页面外边距大小。</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">page</span> &#123;</span><br><span class="line">    <span class="attribute">size</span>: A4 portrait;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">3.7cm</span> <span class="number">2.6cm</span> <span class="number">3.5cm</span>; <span class="comment">/* 国家标准公文页边距 GB/T 9704-2012 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="size-属性支持-auto、landscape、portrait、-1-2-和-。"><a href="#size-属性支持-auto、landscape、portrait、-1-2-和-。" class="headerlink" title="size 属性支持 auto、landscape、portrait、{1,2} 和 。"></a>size 属性支持 auto、landscape、portrait、<length>{1,2} 和 <page-size>。</page-size></length></h4><ul>
+<li>默认值为 auto，表示页面大小和方向由用户代理决定</li>
+<li>landscape 指定页面为横向，如果 <page-size> 没有指定，大小则由用户代理决定</page-size></li>
+<li>portrait 指定页面为纵向，如果 <page-size> 没有指定，大小则由用户代理决定</page-size></li>
+<li><length>{1,2} 表示指定页面大小，填写两个值则分别指定页面盒子的宽度和高度，填写一个值则同时指定宽度和高度。在 CSS3 中，值的单位支持em 和 ex，大小相对于页面上下文中字体的大小</length></li>
+<li><page-size> 也用于指定页面大小，等价于使用 <length>{1,2}。常用的值有：A3、A4、A5、B4 和 B5 等，详细尺寸请参考 ISO 216。<em> </em> <page-size> 可以与 landscape 或 portrait 组合同时指定页面方向。</page-size></length></page-size></li>
+</ul>
+<h3 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h3><p>页面上下文也支持使用伪类，其中支持的伪类有：:left、:right、:first 和 :blank。</p>
+<h4 id="伪类-left-和-right"><a href="#伪类-left-和-right" class="headerlink" title="伪类 :left 和 :right"></a>伪类 :left 和 :right</h4><p>需要双面打印时，通常需要将左页和右页设置不同的样式（如页边距、页码位置）。这时左页和右页可以分别用 :left 和 :right 表示。再次强调，通过 :left 和 :right 设置左右页面不同样式，并不代表用户代理会将页面双面打印</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 通过分别设置左页和右页不同的左右页面距，为装订边留出更多的空间 */</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">page</span> <span class="selector-pseudo">:left</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">2.5cm</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">2.7cm</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">page</span> <span class="selector-pseudo">:right</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">2.7cm</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">2.5cm</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="伪类-first"><a href="#伪类-first" class="headerlink" title="伪类 :first"></a>伪类 :first</h3><h4 id="伪类-first-用于匹配到文档的第一页。"><a href="#伪类-first-用于匹配到文档的第一页。" class="headerlink" title="伪类 :first 用于匹配到文档的第一页。"></a>伪类 :first 用于匹配到文档的第一页。</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">page</span> <span class="selector-pseudo">:first</span> &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">10cm</span>; <span class="comment">/* 首页上页边距设置为 10cm */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="伪类-blank"><a href="#伪类-blank" class="headerlink" title="伪类 :blank"></a>伪类 :blank</h4><p>伪类 :blank 用于匹配文档的空白页。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">page-break-before</span>: left; <span class="comment">/* 一级标题强制分配到右页 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">page</span> <span class="selector-pseudo">:blank</span> &#123;</span><br><span class="line">    @top-center &#123;</span><br><span class="line">        <span class="selector-tag">content</span>: "这是空白页";</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，空白页既可能是左页，又可能是右页，设置左页或右页的样式也会显示在空白页上，如果不希望显示在空白页上，可以清除这些样式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">break-before</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">page</span> <span class="selector-pseudo">:left</span> &#123;</span><br><span class="line">    @left-center &#123;</span><br><span class="line">        <span class="selector-tag">content</span>: "这是左页";</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">page</span> <span class="selector-pseudo">:right</span> &#123;</span><br><span class="line">    @right-center &#123;</span><br><span class="line">        <span class="selector-tag">content</span>: "这是右页";</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">page</span> <span class="selector-pseudo">:blank</span> &#123;</span><br><span class="line">    @left-center, @right-center &#123;</span><br><span class="line">        <span class="selector-tag">content</span>: <span class="selector-tag">none</span>; <span class="comment">/* 如果是空白页则不显示 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>page-break-before，page-break-after，page-break-inside (CSS 2.1)<br>用于控制元素之前、之后或之中是否分页，没有生成盒子的块元素不会生效。</p>
+<p>page-break-before、page-break-after 属性支持 auto、always、avoid、left、right、recto 和 verso。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">    <span class="attribute">page-break-before</span>: always;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>auto 默认值，表示既不强制分页也不禁止分页</li>
+<li>always、avoid 表示在该元素之前（或之后）强制或禁止分页</li>
+<li>left、right 表示在该元素之前（或之后）强制分页，使得下一页出现在左页或右页</li>
+<li>recto、verso 页面进度从左至右时，分别与 right 和 left 一致；反之与 left 和 right 一致</li>
+</ul>
+<p>page-break-inside 属性仅支持 auto 和 avoid，表示在元素内允许或禁止分页。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">thead</span>, <span class="selector-tag">tfoot</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: table-row-group;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">thead</span>, <span class="selector-tag">tfoot</span>, <span class="selector-tag">tr</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">    <span class="attribute">page-break-inside</span>: avoid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="orphans，windows-CSS-2-1"><a href="#orphans，windows-CSS-2-1" class="headerlink" title="orphans，windows (CSS 2.1)"></a>orphans，windows (CSS 2.1)</h3><p>orphans 和 windows 用于指定在页面的底部或顶部，元素中允许剩余的最少行数，默认为 2 行。</p>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><ul>
+<li>“白纸黑字”–避免不必要的背景颜色、加深文字颜色等</li>
+<li>避免打印次要的内容，比如导航栏、侧边栏等</li>
+<li>链接后显示链接地址</li>
+<li>做好分页，避免标题、表格单元格等换行</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> print &#123;</span><br><span class="line">    @<span class="keyword">page</span> &#123;</span><br><span class="line">        <span class="attribute">size</span>: A4 portrait;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">3.7cm</span> <span class="number">2.6cm</span> <span class="number">3.5cm</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">h1</span> &#123;</span><br><span class="line">        <span class="attribute">page-break-before</span>: always;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>,</span><br><span class="line">    <span class="selector-tag">thead</span>, <span class="selector-tag">tfoot</span>, <span class="selector-tag">tr</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span>,</span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">        <span class="attribute">page-break-inside</span>: avoid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>: white;</span><br><span class="line">        <span class="attribute">color</span>: black;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">nav</span>, <span class="selector-tag">aside</span> &#123;</span><br><span class="line">        <span class="attribute">display</span>: none;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">a</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">        <span class="attribute">content</span>: <span class="string">"("</span> <span class="built_in">attr</span>(href) <span class="string">")"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">thead</span>, <span class="selector-tag">tfoot</span> &#123;</span><br><span class="line">        <span class="attribute">display</span>: table-row-group;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/2631211152/" rel="next" title="css-隐藏滚动条">
+                <i class="fa fa-chevron-left"></i> css-隐藏滚动条
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/3965827120/" rel="prev" title="css3-overflow-anchor滚动锚定">
+                css3-overflow-anchor滚动锚定 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">pt</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用媒体查询来专门设置打印时的样式"><span class="nav-number">1.</span> <span class="nav-text">使用媒体查询来专门设置打印时的样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#media-print"><span class="nav-number">1.1.</span> <span class="nav-text">@media print</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在css中导入打印时专有样式"><span class="nav-number">1.2.</span> <span class="nav-text">在css中导入打印时专有样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用link引入打印时专有样式"><span class="nav-number">1.3.</span> <span class="nav-text">使用link引入打印时专有样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#page"><span class="nav-number">2.</span> <span class="nav-text">@page</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置页面外边距盒子"><span class="nav-number">2.1.</span> <span class="nav-text">设置页面外边距盒子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#margin-系列属性（margin-top、margin-right、margin-bottom、margin-left-和-margin）用于指定页面外边距大小。"><span class="nav-number">2.1.1.</span> <span class="nav-text">margin 系列属性（margin-top、margin-right、margin-bottom、margin-left 和 margin）用于指定页面外边距大小。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#size-属性支持-auto、landscape、portrait、-1-2-和-。"><span class="nav-number">2.1.2.</span> <span class="nav-text">size 属性支持 auto、landscape、portrait、{1,2} 和 。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类"><span class="nav-number">2.2.</span> <span class="nav-text">伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#伪类-left-和-right"><span class="nav-number">2.2.1.</span> <span class="nav-text">伪类 :left 和 :right</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类-first"><span class="nav-number">2.3.</span> <span class="nav-text">伪类 :first</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#伪类-first-用于匹配到文档的第一页。"><span class="nav-number">2.3.1.</span> <span class="nav-text">伪类 :first 用于匹配到文档的第一页。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪类-blank"><span class="nav-number">2.3.2.</span> <span class="nav-text">伪类 :blank</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分页"><span class="nav-number">3.</span> <span class="nav-text">分页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orphans，windows-CSS-2-1"><span class="nav-number">3.1.</span> <span class="nav-text">orphans，windows (CSS 2.1)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最佳实践"><span class="nav-number">4.</span> <span class="nav-text">最佳实践</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pt</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
