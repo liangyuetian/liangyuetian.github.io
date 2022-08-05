@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"liangyuetian.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":false,"scrollpercent":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="官方文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svg-animate元素说明">
+<meta property="og:url" content="https://liangyuetian.github.io/posts/22764/index.html">
+<meta property="og:site_name" content="凉月-天">
+<meta property="og:description" content="官方文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-09T15:37:16.000Z">
+<meta property="article:modified_time" content="2022-08-02T14:49:22.325Z">
+<meta property="article:author" content="pt">
+<meta property="article:tag" content="svg animate">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://liangyuetian.github.io/posts/22764/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>svg-animate元素说明 | 凉月-天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凉月-天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">凉月-天的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liangyuetian.github.io/posts/22764/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="pt">
+      <meta itemprop="description" content="凉月-天的个人笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凉月-天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          svg-animate元素说明
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-09 23:37:16" itemprop="dateCreated datePublished" datetime="2019-04-09T23:37:16+08:00">2019-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 22:49:22" itemprop="dateModified" datetime="2022-08-02T22:49:22+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SVG/" itemprop="url" rel="index"><span itemprop="name">SVG</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/animate">官方文档</a></p>
+<span id="more"></span>
+
+
+<p>SVG 元素中的动画元素，用来描述某一个属性的动画过程</p>
+<p><strong>官方描述</strong></p>
+<blockquote>
+<p>动画元素放在形状元素的内部，用来定义一个元素的某个属性如何踩着时点改变。在指定持续时间里，属性从开始值变成结束值。</p>
+</blockquote>
+<h3 id="全局属性"><a href="#全局属性" class="headerlink" title="全局属性"></a>全局属性</h3><h3 id="私有属性"><a href="#私有属性" class="headerlink" title="私有属性"></a>私有属性</h3><ul>
+<li><a href="#attributeName">attributeName</a></li>
+<li><a href="#attributeType">attributeType</a></li>
+<li><a href="#from">from to</a></li>
+<li><a href="#dur">dur</a></li>
+<li><a href="#repeatCount">repeatCount</a></li>
+</ul>
+<h4 id="AttributeName-动画的属性名"><a href="#AttributeName-动画的属性名" class="headerlink" title="AttributeName 动画的属性名"></a><a name="attributeName">AttributeName</a> 动画的属性名</h4><p>该属性标识了在一个动画动作环节中，父元素的需要被改变的属性名。</p>
+<p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">rect</span> <span class="attr">x</span>=<span class="string">&quot;50&quot;</span> <span class="attr">y</span>=<span class="string">&quot;50&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">animate</span> <span class="attr">attributeType</span>=<span class="string">&quot;XML&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">attributeName</span>=<span class="string">&quot;y&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">from</span>=<span class="string">&quot;0&quot;</span> <span class="attr">to</span>=<span class="string">&quot;50&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">dur</span>=<span class="string">&quot;5s&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 比如这里的y，就是对矩形的长对象一个变化，从0增加到50 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="attributeType"><a href="#attributeType" class="headerlink" title="attributeType"></a><a name="attributeType">attributeType</a></h4><p>该属性指定目标属性和它相对应的值处于哪个命名空间里。<br>可取值有<br><code>CSS</code> <code>XML</code> <code>auto</code></p>
+<p><strong>CSS</strong><br>指定attributeName的值是一个CSS属性名。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">&quot;120&quot;</span> <span class="attr">height</span>=<span class="string">&quot;120&quot;</span> <span class="attr">viewPort</span>=<span class="string">&quot;0 0 120 120&quot;</span> <span class="attr">version</span>=<span class="string">&quot;1.1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rect</span> <span class="attr">x</span>=<span class="string">&quot;10&quot;</span> <span class="attr">y</span>=<span class="string">&quot;10&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">animate</span> <span class="attr">attributeType</span>=<span class="string">&quot;CSS&quot;</span> <span class="attr">attributeName</span>=<span class="string">&quot;fill&quot;</span> <span class="attr">from</span>=<span class="string">&quot;red&quot;</span> <span class="attr">to</span>=<span class="string">&quot;green&quot;</span> <span class="attr">dur</span>=<span class="string">&quot;10s&quot;</span> <span class="attr">repeatCount</span>=<span class="string">&quot;indefinite&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 将填充色从 red 变到 green --&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>XML</strong><br>指定attributeName的值是一个XML属性名，在目标元素的默认XML命名空间里。<br>其实就是元素属性，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">&quot;120&quot;</span> <span class="attr">height</span>=<span class="string">&quot;120&quot;</span> <span class="attr">viewPort</span>=<span class="string">&quot;0 0 120 120&quot;</span> <span class="attr">version</span>=<span class="string">&quot;1.1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rect</span> <span class="attr">x</span>=<span class="string">&quot;10&quot;</span> <span class="attr">y</span>=<span class="string">&quot;10&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">animate</span> <span class="attr">attributeType</span>=<span class="string">&quot;XML&quot;</span> <span class="attr">attributeName</span>=<span class="string">&quot;x&quot;</span> <span class="attr">from</span>=<span class="string">&quot;0&quot;</span> <span class="attr">to</span>=<span class="string">&quot;100&quot;</span> <span class="attr">dur</span>=<span class="string">&quot;10s&quot;</span> <span class="attr">repeatCount</span>=<span class="string">&quot;indefinite&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 将x坐标从 0 变到 100 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>auto</strong><br>编译器将把attributeName匹配到目标元素的一个属性。用户代理先搜索CSS属性列表以找出一个匹配的属性名，如果找不到，再为这个元素搜索默认XML命名空间。</p>
+<h4 id="from-to"><a href="#from-to" class="headerlink" title="from to"></a><a name="from">from to</a></h4><p>这个属性是在svg动画发生过程中被修改的属性的初始值。<br>当同时使用了这个属性和  to 属性, animation将会修改这个这个设定的动画属性的值从from属性的值到to属性的值。</p>
+<h4 id="dur"><a href="#dur" class="headerlink" title="dur"></a><a name="dur">dur</a></h4><p>该属性标识了动画的简单持续时间。<br>可选值有<br><code>clock-value</code> | <code>indefinite</code></p>
+<p><strong>clock-value</strong><br>指定简单持续时间的时长。值必须大于0。可以用小时（h）、分钟（m）、秒（s）、毫秒（ms）表达这个值。<br>可以组合这些时间表达式以提供一个复合的持续时间，比如这样：hh:mm:ss.iii或者这样：mm:ss.iii。</p>
+<p><strong>indefinite</strong><br>不发生改变</p>
+<h4 id="repeatCount"><a href="#repeatCount" class="headerlink" title="repeatCount"></a><a name="repeatCount">repeatCount</a></h4><p>这个属性表示动画将发生的次数。<br>这个属性的值指定了重复的次数。它也可以包括用分数值表示。它的值必须大于0。<br><code>number</code> | <code>indefinite</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/svg-animate/" rel="tag"><i class="fa fa-tag"></i> svg animate</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/1870441517/" rel="prev" title="angular-ngstyle-奇妙的单位绑定">
+      <i class="fa fa-chevron-left"></i> angular-ngstyle-奇妙的单位绑定
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/21984/" rel="next" title="svg-动画路径,轨迹移动,变幻">
+      svg-动画路径,轨迹移动,变幻 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">全局属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">私有属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AttributeName-%E5%8A%A8%E7%94%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E5%90%8D"><span class="nav-number">2.1.</span> <span class="nav-text">AttributeName 动画的属性名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attributeType"><span class="nav-number">2.2.</span> <span class="nav-text">attributeType</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#from-to"><span class="nav-number">2.3.</span> <span class="nav-text">from to</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dur"><span class="nav-number">2.4.</span> <span class="nav-text">dur</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repeatCount"><span class="nav-number">2.5.</span> <span class="nav-text">repeatCount</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">pt</p>
+  <div class="site-description" itemprop="description">凉月-天的个人笔记</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">京ICP备2022008673号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pt</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

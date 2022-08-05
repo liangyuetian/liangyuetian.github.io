@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"liangyuetian.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":false,"scrollpercent":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="辅助类操作符count，max，min，Reduceevery，find，findIndexisEmpty，defaultEmpty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="辅助类操作符">
+<meta property="og:url" content="https://liangyuetian.github.io/posts/4054695600/index.html">
+<meta property="og:site_name" content="凉月-天">
+<meta property="og:description" content="辅助类操作符count，max，min，Reduceevery，find，findIndexisEmpty，defaultEmpty">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p2.music.126.net/4zluTz1ckuBWIbWHzc5xQA==/109951163736812658.jpg?param=90y90">
+<meta property="article:published_time" content="2019-01-02T15:11:01.000Z">
+<meta property="article:modified_time" content="2022-08-02T14:49:22.321Z">
+<meta property="article:author" content="pt">
+<meta property="article:tag" content="rxjs">
+<meta property="article:tag" content="操作符">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p2.music.126.net/4zluTz1ckuBWIbWHzc5xQA==/109951163736812658.jpg?param=90y90">
+
+<link rel="canonical" href="https://liangyuetian.github.io/posts/4054695600/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>辅助类操作符 | 凉月-天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">凉月-天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">凉月-天的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liangyuetian.github.io/posts/4054695600/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="pt">
+      <meta itemprop="description" content="凉月-天的个人笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凉月-天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          辅助类操作符
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-02 23:11:01" itemprop="dateCreated datePublished" datetime="2019-01-02T23:11:01+08:00">2019-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 22:49:22" itemprop="dateModified" datetime="2022-08-02T22:49:22+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RxJs/" itemprop="url" rel="index"><span itemprop="name">RxJs</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>779</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="//p2.music.126.net/4zluTz1ckuBWIbWHzc5xQA==/109951163736812658.jpg?param=90y90" width = "100" height = "100" div align=right style="position: absolute; right: 0; margin-top: -10px;" />
+
+<p>辅助类操作符<br>count，max，min，Reduce<br>every，find，findIndex<br>isEmpty，defaultEmpty</p>
+<span id="more"></span>
+
+<h2 id="第三大类：辅助类操作符"><a href="#第三大类：辅助类操作符" class="headerlink" title="第三大类：辅助类操作符"></a>第三大类：辅助类操作符</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count</td>
+<td>统计数据流中产生的所有数据个数</td>
+</tr>
+<tr>
+<td>max min</td>
+<td>获得数据流中的最大和最小数据</td>
+</tr>
+<tr>
+<td>Reduce</td>
+<td>对数据流中所有数据进行规约操作</td>
+</tr>
+<tr>
+<td>every</td>
+<td>判断一个数据流是否不包含任何数据</td>
+</tr>
+<tr>
+<td>find findIndex</td>
+<td>找到第一个满足判定条件的数据</td>
+</tr>
+<tr>
+<td>isEmpty</td>
+<td>判断一个数据流是否不包含任何数据</td>
+</tr>
+<tr>
+<td>defaultEmpty</td>
+<td>如果一个数据流为空就默认产生一个指定的数据</td>
+</tr>
+</tbody></table>
+<p>例子：</p>
+<h4 id="数学类操作符"><a href="#数学类操作符" class="headerlink" title="数学类操作符"></a>数学类操作符</h4><h4 id="count-max-min-reduce"><a href="#count-max-min-reduce" class="headerlink" title="count max min reduce"></a>count max min reduce</h4><p>所有的这些操作符都是实例操作符，还有一个共同特点，就是就些操作符必定会遍历上游Observable对象中突出的所有数据才给下游传递数据，也就是时说，他们就有在上游完结的时候，才给下游传递唯一数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">count 的作用就是统计上游<span class="title class_">Observable</span>对象吐出的所有数据个数。</span><br><span class="line">max,min的作用就是取得上游<span class="title class_">Observable</span>吐出所有数据的最大值或最小值，第二个参数接受一个比较函数</span><br><span class="line">reduce 规约统计，跟原生数组的reduce作用一样，用法一样</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="every-find-findIndex"><a href="#every-find-findIndex" class="headerlink" title="every find findIndex"></a>every find findIndex</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">every 要求一个判定函数作为参数，上游<span class="title class_">Observable</span>吐出的每一个数据都会被这个判定函数检验，如果所有数据的判定结果都是<span class="literal">true</span>,那么上游<span class="title class_">Observable</span>对象完结的时候，如果有一个为<span class="literal">false</span>，那么立刻完结吐出<span class="literal">false</span>,基本和原生数组every方法作用一致</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="isEmpty"><a href="#isEmpty" class="headerlink" title="isEmpty"></a>isEmpty</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isEmpty 用于检查一个上游<span class="title class_">Observable</span>对象是不是‘空的’，所谓‘空的’<span class="title class_">Observable</span>是指没有吐出任何数据就完结的<span class="title class_">Observable</span>对象。</span><br></pre></td></tr></table></figure>
+
+<h4 id="defaultEmpty-接受一个默认值作为参数，如果发现上游是空的，那么返回这个默认值"><a href="#defaultEmpty-接受一个默认值作为参数，如果发现上游是空的，那么返回这个默认值" class="headerlink" title="defaultEmpty 接受一个默认值作为参数，如果发现上游是空的，那么返回这个默认值"></a>defaultEmpty 接受一个默认值作为参数，如果发现上游是空的，那么返回这个默认值</h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/rxjs/" rel="tag"><i class="fa fa-tag"></i> rxjs</a>
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%AC%A6/" rel="tag"><i class="fa fa-tag"></i> 操作符</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/42779/" rel="prev" title="合并数据操作符">
+      <i class="fa fa-chevron-left"></i> 合并数据操作符
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/3458632642/" rel="next" title="过滤操作符">
+      过滤操作符 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%A4%A7%E7%B1%BB%EF%BC%9A%E8%BE%85%E5%8A%A9%E7%B1%BB%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">第三大类：辅助类操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E7%B1%BB%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.0.1.</span> <span class="nav-text">数学类操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#count-max-min-reduce"><span class="nav-number">1.0.2.</span> <span class="nav-text">count max min reduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#every-find-findIndex"><span class="nav-number">1.0.3.</span> <span class="nav-text">every find findIndex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isEmpty"><span class="nav-number">1.0.4.</span> <span class="nav-text">isEmpty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#defaultEmpty-%E6%8E%A5%E5%8F%97%E4%B8%80%E4%B8%AA%E9%BB%98%E8%AE%A4%E5%80%BC%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%EF%BC%8C%E5%A6%82%E6%9E%9C%E5%8F%91%E7%8E%B0%E4%B8%8A%E6%B8%B8%E6%98%AF%E7%A9%BA%E7%9A%84%EF%BC%8C%E9%82%A3%E4%B9%88%E8%BF%94%E5%9B%9E%E8%BF%99%E4%B8%AA%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">1.0.5.</span> <span class="nav-text">defaultEmpty 接受一个默认值作为参数，如果发现上游是空的，那么返回这个默认值</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">pt</p>
+  <div class="site-description" itemprop="description">凉月-天的个人笔记</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">京ICP备2022008673号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pt</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
